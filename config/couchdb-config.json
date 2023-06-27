@@ -1,0 +1,7 @@
+{
+    "url": "http://localhost:5984",
+    "auth": {
+      "username": "admin",
+      "password": "anhlabeo1"
+    }
+  }

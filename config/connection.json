@@ -1,0 +1,88 @@
+{
+    "name": "my-network",
+    "version": "1.0.0",
+    "channels": {
+        "my-channel": {
+            "orderers": [
+                "orderer.example.com"
+            ],
+            "peers": {
+                "peer0.org1.example.com": {},
+                "peer0.org2.example.com": {}
+            }
+        }
+    },
+    "organizations": {
+        "Org1": {
+            "mspid": "Org1MSP",
+            "peers": [
+                "peer0.org1.example.com"
+            ],
+            "certificateAuthorities": [
+                "ca.org1.example.com"
+            ]
+        },
+        "Org2": {
+            "mspid": "Org2MSP",
+            "peers": [
+                "peer0.org2.example.com"
+            ],
+            "certificateAuthorities": [
+                "ca.org2.example.com"
+            ]
+        }
+    },
+    "orderers": {
+        "orderer.example.com": {
+            "url": "grpcs://orderer.example.com:7050",
+            "grpcOptions": {
+                "ssl-target-name-override": "orderer.example.com"
+            },
+            "tlsCACerts": {
+                "path": "/path/to/orderer-tlsca-cert.pem"
+            }
+        }
+    },
+    "peers": {
+        "peer0.org1.example.com": {
+            "url": "grpcs://peer0.org1.example.com:7051",
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.org1.example.com"
+            },
+            "tlsCACerts": {
+                "path": "/path/to/org1-tlsca-cert.pem"
+            }
+        },
+        "peer0.org2.example.com": {
+            "url": "grpcs://peer0.org2.example.com:7051",
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.org2.example.com"
+            },
+            "tlsCACerts": {
+                "path": "/path/to/org2-tlsca-cert.pem"
+            }
+        }
+    },
+    "certificateAuthorities": {
+        "ca.org1.example.com": {
+            "url": "https://ca.org1.example.com:7054",
+            "caName": "ca-org1",
+            "tlsCACerts": {
+                "path": "/path/to/org1-ca-cert.pem"
+            }
+        },
+        "ca.org2.example.com": {
+            "url": "https://ca.org2.example.com:7054",
+            "caName": "ca-org2",
+            "tlsCACerts": {
+                "path": "/path/to/org2-ca-cert.pem"
+            }
+        }
+    },
+    "wallet": {
+        "type": "filesystem",
+        "options": {
+            "path": "./wallet"
+        }
+    }
+}
